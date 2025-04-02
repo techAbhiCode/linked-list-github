@@ -1,16 +1,21 @@
 public class deleteNthNodeFromEnd {
-    public static void nthNodeDel(Node head, int n){
+    public static Node nthNodeDel(Node head, int n){
         Node slow = head;
         Node fast = head;
 
         for (int i = 1; i <=n ; i++) {
             fast = fast.next;
         }
+        if(fast == null){
+            head = head.next;
+            return head;
+        }
         while (fast.next!=null){
             slow =slow.next;
             fast = fast.next;
         }
         slow.next = slow.next.next;
+        return head;
     }
     public static void display(Node head){
         Node temp = head;
@@ -41,7 +46,7 @@ public class deleteNthNodeFromEnd {
         e.next = f;
         display(a);
         System.out.println();
-        nthNodeDel(a, 3);
+        a = nthNodeDel(a, 6);
         System.out.println();
         display(a);
     }
